@@ -59,4 +59,11 @@ class AvengerResource (
                     }
                 }
             }?:ResponseEntity.notFound().build<Void>()
+
+    @DeleteMapping("{id}")
+    fun deleteAvenger(@PathVariable(value ="id") id: Long)=
+            repository.delete(id).let{
+                ResponseEntity.accepted().build<Void>()
+            }
+
 }
